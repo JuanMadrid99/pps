@@ -1,0 +1,40 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
+    "dev": "nodemon --exec",
+    "build": "cd ../client && npm run build",
+    "copy": "copyfiles -u 3 '../client/build/**/*' 'src/public'",
+    "build:copy": "npm run build && npm run copy",
+    "start": "pm2 start ecosystem.config.cjs --env production",
+    "start:dev": "pm2 start ecosystem.config.cjs --env development",
+    "deve": "npm run start:dev",
+    "prod": "npm run start",
+    "restart": "pm2 restart back"
+  },
+  "author": "practicante",
+  "license": "ISC",
+  "description": "Backend del proyecto statusApps ",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-session-sequelize": "^7.1.7",
+    "cors": "^2.8.5",
+    "debug": "^4.3.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "morgan": "^1.10.0",
+    "mssql": "^11.0.1",
+    "sequelize": "^6.37.3",
+    "tedious": "^18.6.1"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
+  }
+}
